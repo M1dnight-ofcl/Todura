@@ -8,19 +8,19 @@ import { faCheck, faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-ico
 
 
 const List = () => {
-    let items;
-    if (localStorage.getItem('TaskSave')) {
-        items = localStorage.getItem('TaskSave');
-    } else {
-        items = [
-            // example item:
-            // {
-            //     "index": 0,
-            //     "name": "Hello, World #1",
-            //     "desc": "1: code, 2: code",
-            // },
-        ]
-    }
+    let items = [];
+    // if (localStorage.getItem('TaskSave')) {
+    //     items = localStorage.getItem('TaskSave');
+    // } else {
+    //     items = [
+    //         // example item:
+    //         // {
+    //         //     "index": 0,
+    //         //     "name": "Hello, World #1",
+    //         //     "desc": "1: code, 2: code",
+    //         // },
+    //     ]
+    // }
     const [Tasks, setTasks] = useState(
         items
     );

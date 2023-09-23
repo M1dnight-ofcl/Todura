@@ -12,6 +12,7 @@
 
   --successful: #18cded;
   --unsuccessful: #d93a6f;
+  --inactive: #5f5f5f;
 
   --heading-color-1: #ebebeb;
   --paragraph-color-1: #bababa;
@@ -155,6 +156,22 @@ html {
   position: fixed;
   right: 0%;
   bottom: 0%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+#todo-list::-webkit-scrollbar {
+  width: 10px;
+}
+#todo-list::-webkit-scrollbar-track {
+  background: #00000000;
+}
+#todo-list::-webkit-scrollbar-thumb {
+  background: var(--ui-color-tertiary);
+  border-radius: var(--global-border-radius);
+}
+#todo-list::-webkit-scrollbar-thumb:hover {
+  background: var(--ui-color-primary);
 }
 .Item {
   padding: 2vmin;
@@ -220,6 +237,10 @@ html {
 }
 .SelectedItemCheckbox * {
   color: #fff;
+}
+.SelectedItemCheckbox + .ItemTextWrapper * {
+  text-decoration: line-through;
+  color: var(--inactive);
 }
 .Item input {
   height: 100%;
