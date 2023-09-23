@@ -2,7 +2,7 @@
   "name": "todura",
   "productName": "todura",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "A simple todo app built in Javascript using Electron, Vite, and React",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
