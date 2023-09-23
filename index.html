@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Todura App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <div class="navbar navbar-unmaximized">
+    <h1 class="wintitle">Todura</h1>
+    <div class="close close-unmaximized" id="close"><i class="fa-solid fa-xmark"></i></div>
+  </div>
+  <body>
+    <div class="main main-unmaximized">
+      <div class="sidebar-text-wrapper">
+        <h1>Welcome to Todura</h1>
+        <p>To get started, please add a new task to your todo list</p>
+        <br><br><br>
+        <button id="newTodoItem" class="sidebarButton">New Task</button>
+      </div>
+      <div class="NewTaskWindow" id="NewTaskWindow">
+        <h1>New Task</h1>
+
+        <div class="NewTaskClose" id="NewTaskClose"><i class="fa-solid fa-xmark"></i></div>
+
+        <label for="newTaskName" class="NewTaskInputLabel">Task Name</label>
+        <input class="NewTaskInput" type="text" name="newTaskName" id="newTaskName" />
+
+        <label for="newTaskDesc" class="NewTaskInputLabel">Task Objective</label>
+        <input class="NewTaskInput" type="text" name="newTaskDesc" id="newTaskDesc" />
+
+        <br>
+        <br>
+
+        <button class="sidebarButton" id="createTask">Create</button>
+      </div>
+      <div id="todo-list">
+      </div>
+    </div>
+    <script type="module" src="/src/renderer.js"></script>
+  </body>
+</html>
