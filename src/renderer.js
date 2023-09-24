@@ -41,5 +41,10 @@ document.getElementById("NewTaskClose").addEventListener("click", (e) => {
   e.preventDefault();
   document.getElementById("NewTaskWindow").style.display = "none";
 });
+document.getElementById("EditTaskClose").addEventListener("click", (e) => {
+  e.preventDefault();
+  document.getElementById("EditTaskWindow").style.display = "none";
+});
+
 
 import './app.jsx';

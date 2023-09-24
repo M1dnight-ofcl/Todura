@@ -34,7 +34,7 @@ const List = () => {
         console.log(`creating item with name: ${name} and desc: ${desc}`)
         setTasks([
             ...Tasks,
-            {index:(Tasks.length+1) ,"name":name, "desc":desc}
+            {"index":(Tasks.length+1) ,"name":name, "desc":desc}
         ]);
         // localStorage.setItem('TaskSave', Tasks); 
         // nameElement.value = "";
@@ -66,6 +66,41 @@ const List = () => {
         useEffect(() => {
             onLoadAction();
         });
+        /*
+        const openEditMenu = (index) => {
+            console.log('pressed "edittask" button');
+            let visible = document.getElementById("EditTaskWindow").style.display === "block";
+            if (visible) {
+                document.getElementById("EditTaskWindow").style.display = "none";
+                console.log('closed edittask window');
+            } else if (!visible) {
+                document.getElementById("EditTaskWindow").style.display = "block";
+                console.log('opened edittask window');
+            }
+        }
+        document.getElementById("editTask").addEventListener("click", (e) => {
+            e.preventDefault();
+            let nameElement = document.getElementById("EditTaskName");
+            let descElement = document.getElementById("EditTaskDesc");
+            let name = nameElement.value;
+            let desc = descElement.value;
+            console.log(`editing item${prop.index} with name: ${name} and desc: ${desc}`)
+            setTasks([
+                Tasks.filter(t => 
+                t.index <= prop.index-2
+                ),
+                {"index":prop.index ,"name":name, "desc":desc},
+                Tasks.filter(t => 
+                    t.index >= prop.index
+                )
+            ]);
+            // localStorage.setItem('TaskSave', Tasks); 
+            // nameElement.value = "";
+            // descElement.value = "";
+            document.getElementById("EditTaskWindow").style.display = "none";
+            // window.location.reload();
+        });
+        */
         const deleteTask = (index) => {
             console.log(`deleting item${prop.index}`);
             // document.getElementById(`item${prop.index}`).remove()
@@ -87,7 +122,7 @@ const List = () => {
                     <p>{prop.taskObjective}</p>
                 </div>
                 <div className="ItemActionContainer">
-                    <span id={`item${prop.index}edit`} className="ItemAction"><FontAwesomeIcon icon={faPenToSquare} /></span>
+                    {/* <span onClick={() => openEditMenu(prop.index)} id={`item${prop.index}edit`} className="ItemAction"><FontAwesomeIcon icon={faPenToSquare} /></span> */}
                     <span onClick={() => deleteTask(prop.index)} id={`item${prop.index}del`} className="ItemAction"><FontAwesomeIcon icon={faTrash} /></span>
                 </div>
             </div>

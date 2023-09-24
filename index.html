@@ -72,6 +72,22 @@
 
         <button class="sidebarButton" id="createTask">Create</button>
       </div>
+      <div class="NewTaskWindow" id="EditTaskWindow">
+        <h1>Edit Task</h1>
+
+        <div class="NewTaskClose" id="EditTaskClose"><i class="fa-solid fa-xmark"></i></div>
+
+        <label for="newTaskName" class="NewTaskInputLabel">New Task Name</label>
+        <input onfocus="this.value=''" class="NewTaskInput" type="text" name="newTaskName" id="EditTaskName" />
+
+        <label for="newTaskDesc" class="NewTaskInputLabel">New Task Objective</label>
+        <input onfocus="this.value=''" class="NewTaskInput" type="text" name="newTaskDesc" id="EditTaskDesc" />
+
+        <br>
+        <br>
+
+        <button class="sidebarButton" id="editTask">Confirm</button>
+      </div>
       <div id="todo-list">
       </div>
     </div>
