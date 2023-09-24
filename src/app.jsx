@@ -36,7 +36,10 @@ const List = () => {
             ...Tasks,
             {index:(Tasks.length+1) ,"name":name, "desc":desc}
         ]);
-        localStorage.setItem('TaskSave', Tasks); 
+        // localStorage.setItem('TaskSave', Tasks); 
+        // nameElement.value = "";
+        // descElement.value = "";
+        document.getElementById("NewTaskWindow").style.display = "none";
         // window.location.reload();
     });
     const Item = (prop) => {

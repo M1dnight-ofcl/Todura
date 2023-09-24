@@ -6,6 +6,7 @@
   --ui-color-primary: #3b3b3b;
   --ui-color-secondary: #282828;
   --ui-color-tertiary: #353434;
+  --ui-color-quaternary: #3f3f3f;
 
   --navbar-color: #161616;
   --active: #7b04f9;
@@ -91,6 +92,34 @@ html {
   background: var(--active);
 }
 .close:active {
+  transition: 0.05s;
+  background: var(--ui-color);
+  border-width: var(--active-outline-thickness);
+}
+.settings {
+  height: 35px;
+  aspect-ratio: 1/1;
+  font-size: 17.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  right: 35px;
+  -webkit-app-region: no-drag;
+  box-sizing: border-box;
+  transition: 0.35s;
+  border: 0vmin solid var(--active);
+  cursor: pointer;
+  border-radius: var(--global-border-radius);
+}
+.settings:hover {
+  color: var(--active);
+}
+.settings:active {
+  transition: 0.05s;
   background: var(--ui-color);
   border-width: var(--active-outline-thickness);
 }
@@ -348,5 +377,93 @@ html {
 }
 .NewTaskClose:active {
   border: var(--active-outline-thickness) solid var(--active);
+  filter: drop-shadow(0 0 1vmin var(--active));
+}
+#settingsMenu {
+  position: fixed;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 75dvh;
+  width: 90dvw;
+  background: var(--ui-color-secondary);
+  padding: 3.5vmin;
+  margin: 0;
+  border-radius: var(--global-border-radius);
+  z-index: 98;
+  border: 0.25vmin solid var(--ui-color-primary);
+  box-sizing: border-box;
+}
+#tabContainer {
+  background: var(--ui-color-tertiary);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 35px;
+  width: 100%;
+  border-top-left-radius: var(--global-border-radius);
+  border-top-right-radius: var(--global-border-radius);
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.tablinks {
+  height: 90%;
+  width: 20vmin;
+  border: 0.0vmin solid var(--active);
+  outline: none;
+  background: var(--ui-color-quaternary);
+  color: var(--heading-color-1);
+  margin-left: 1vmin;
+  border-top-left-radius: var(--global-border-radius);
+  border-top-right-radius: var(--global-border-radius);
+  font-family: 'JetBrains Mono', sans-serif;
+  cursor: pointer;
+  transition: 0.35s;
+}
+.tablinks:hover {
+  background: var(--active);
+}
+.active-tablink {
+  background: var(--ui-color-secondary);
+}
+.tabContents {
+  height: calc(100% - 35px - 10vmin);
+  width: calc(100% - 10vmin);
+  position: fixed;
+  bottom: 0%;
+  left: 0%;
+  padding: 5vmin;
+  background: var(--ui-color-secondary);
+  display: none;
+}
+#closeSettings {
+  height: 100%;
+  aspect-ratio: 1/1;
+  color: var(--paragraph-color-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5vmin;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  border-top-right-radius: var(--global-border-radius);
+  box-sizing: border-box;
+  border: 0vmin solid var(--active);
+  transition: 0.35s;
+}
+#closeSettings:hover {
+  background: var(--active);
+  filter: drop-shadow(0 0 1vmin var(--active));
+}
+#closeSettings:active {
+  transition: 0.05s;
+  border-width: .5vmin;
+  background: var(--ui-color-quaternary);
   filter: drop-shadow(0 0 1vmin var(--active));
 }

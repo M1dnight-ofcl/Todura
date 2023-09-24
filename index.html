@@ -9,6 +9,7 @@
   <div class="navbar navbar-unmaximized">
     <h1 class="wintitle">Todura</h1>
     <div class="close close-unmaximized" id="close"><i class="fa-solid fa-xmark"></i></div>
+    <div class="settings" id="settingsButton"><i class="fa-solid fa-gear"></i></div>
   </div>
   <body>
     <div class="main main-unmaximized">
@@ -18,16 +19,53 @@
         <br><br><br>
         <button id="newTodoItem" class="sidebarButton">New Task</button>
       </div>
+      <div id="settingsMenu">
+        <script>
+          const openTab = (evt, tabName) => {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+          
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabContents");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+          
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].classList.add('tablinks');
+              tablinks[i].classList.remove('active-tablink');
+            }
+          
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.classList.add('tablinks');
+            evt.currentTarget.classList.add('active-tablink');
+          }
+        </script>
+        <div id="tabContainer">
+          <div id="closeSettings"><i class="fa-solid fa-xmark"></i></div>
+          <button class="tablinks" onclick="openTab(event, 'general')">General</button>
+          <button class="tablinks" onclick="openTab(event, 'appearance')">Appearance</button>
+        </div>
+        <div class="tabContents" id="general">
+          <h1>General Settings</h1>
+        </div>
+        <div class="tabContents" id="appearance">
+          <h1>Appearance</h1>
+        </div>
+      </div>
       <div class="NewTaskWindow" id="NewTaskWindow">
         <h1>New Task</h1>
 
         <div class="NewTaskClose" id="NewTaskClose"><i class="fa-solid fa-xmark"></i></div>
 
         <label for="newTaskName" class="NewTaskInputLabel">Task Name</label>
-        <input class="NewTaskInput" type="text" name="newTaskName" id="newTaskName" />
+        <input onfocus="this.value=''" class="NewTaskInput" type="text" name="newTaskName" id="newTaskName" />
 
         <label for="newTaskDesc" class="NewTaskInputLabel">Task Objective</label>
-        <input class="NewTaskInput" type="text" name="newTaskDesc" id="newTaskDesc" />
+        <input onfocus="this.value=''" class="NewTaskInput" type="text" name="newTaskDesc" id="newTaskDesc" />
 
         <br>
         <br>
