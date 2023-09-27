@@ -56,14 +56,14 @@ document.getElementById("themes").addEventListener("change", (e) => {
   let txt = e.currentTarget.options[e.currentTarget.selectedIndex].value;
   let root = document.querySelector(':root');
   // console.log(txt);
-  let isValid;
+  let isValid = true;
   let response = getText(`https://raw.githubusercontent.com/M1dnight-ofcl/Todura-Themes/main/${txt}`);
-  try { 
-    isValid= Boolean(new URL(urlString)); 
-  }
-  catch(e){ 
-    isValid= false; 
-  }
+  // try { 
+  //   isValid= Boolean(new URL(urlString)); 
+  // }
+  // catch(e){ 
+  //   isValid= false; 
+  // }
   if (!isValid) return;
   let parsedResponse = JSON.parse(response);
   let keys = Object.keys(parsedResponse);
@@ -75,14 +75,14 @@ document.getElementById("themes").addEventListener("change", (e) => {
 })
 document.getElementById('submitCustomUrl').addEventListener('click', (e) => {
   e.preventDefault();
-  let isValid = true;
+  let isValid;
   let customUrl = document.getElementById('customUrl');
-  // try { 
-  //   isValid= Boolean(new URL(urlString)); 
-  // }
-  // catch(e){ 
-  //   isValid= false; 
-  // }
+  try { 
+    isValid= Boolean(new URL(urlString)); 
+  }
+  catch(e){ 
+    isValid= false; 
+  }
   let response = getText(customUrl.value);
   console.log(customUrl.value, isValid);
   if (!isValid) {
