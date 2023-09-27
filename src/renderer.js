@@ -75,14 +75,14 @@ document.getElementById("themes").addEventListener("change", (e) => {
 })
 document.getElementById('submitCustomUrl').addEventListener('click', (e) => {
   e.preventDefault();
-  let isValid;
+  let isValid = true;
   let customUrl = document.getElementById('customUrl');
-  try { 
-    isValid= Boolean(new URL(urlString)); 
-  }
-  catch(e){ 
-    isValid= false; 
-  }
+  // try { 
+  //   isValid= Boolean(new URL(urlString)); 
+  // }
+  // catch(e){ 
+  //   isValid= false; 
+  // }
   let response = getText(customUrl.value);
   console.log(customUrl.value, isValid);
   if (!isValid) {
