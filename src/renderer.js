@@ -2,6 +2,8 @@ import './index.css';
 window.$ = window.jQuery = require('jquery')
 const ipc = require('electron').ipcRenderer
 
+let currentstatus=true;
+
 document.getElementById("settingsButton").addEventListener('click', (e) => {
   e.preventDefault();
   console.log('pressed "settings" button');
@@ -41,7 +43,8 @@ function getText(filePath) {
   return $.ajax({
         type: "GET",
         url: filePath,
-        async: false
+        async: false,
+        error: () => {currentstatus=false}
     }).responseText;
 }
 document.getElementById("NewTaskClose").addEventListener("click", (e) => {
@@ -54,6 +57,9 @@ document.getElementById("EditTaskClose").addEventListener("click", (e) => {
 });
 document.getElementById("themes").addEventListener("change", (e) => {
   let txt = e.currentTarget.options[e.currentTarget.selectedIndex].value;
+  if (txt === "custom") {
+    return;
+  }
   let root = document.querySelector(':root');
   // console.log(txt);
   let isValid = true;
@@ -75,17 +81,23 @@ document.getElementById("themes").addEventListener("change", (e) => {
 })
 document.getElementById('submitCustomUrl').addEventListener('click', (e) => {
   e.preventDefault();
-  let isValid;
+  let root = document.querySelector(':root');
   let customUrl = document.getElementById('customUrl');
-  try { 
-    isValid= Boolean(new URL(urlString)); 
-  }
-  catch(e){ 
-    isValid= false; 
-  }
   let response = getText(customUrl.value);
-  console.log(customUrl.value, isValid);
-  if (!isValid) {
+  // isValid = true;
+  console.log(customUrl.value);
+  try {
+    let parsedResponse = JSON.parse(response);
+    let keys = Object.keys(parsedResponse);
+    console.log(parsedResponse);
+    for (let i = 0; i < keys.length; i++) {
+      // console.log(`setting --${keys[i]} to ${parsedResponse[keys[i]]}`)
+      root.style.setProperty(`--${keys[i]}`, parsedResponse[keys[i]]);
+    }
+    document.getElementById('themes').value = "custom";
+    document.getElementById('successfulUrl').style.display = 'block';
+    setTimeout(() => { document.getElementById('successfulUrl').style.display = 'none'; }, 2000);
+  } catch {
     console.error('bad url');
     document.getElementById('invalidUrl').style.display = 'block';
     setTimeout(() => { document.getElementById('invalidUrl').style.display = 'none'; }, 2000);

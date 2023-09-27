@@ -536,3 +536,10 @@ html {
   padding: 0;
   display: none;
 }
+#successfulUrl {
+  font-size: 2vmin;
+  color: var(--successful);
+  margin: 0;
+  padding: 0;
+  display: none;
+}

@@ -68,12 +68,14 @@
               <option value="misc/forest.json">Forest</option>
               <option value="misc/translucent.json">Translucent</option>
             </optgroup>
+            <option value="custom">Custom</option>
           </select>
           <br><br>
           <label for="customUrl" class="NewTaskInputLabel">Input Custom URL</label><br>
         <input onfocus="this.value='';" class="NewTaskInput" type="text" name="customUrl" id="customUrl" /> 
         <button class="sidebarButton" id="submitCustomUrl">Submit</button><br>
-        <span id="invalidUrl">Invalid Url!</span>
+        <span id="invalidUrl">Invalid Url</span>
+        <span id="successfulUrl">Successfully Loaded Url</span>
         </div>
       </div>
       <div class="NewTaskWindow" id="NewTaskWindow">
