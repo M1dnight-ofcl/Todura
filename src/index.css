@@ -22,6 +22,7 @@
   --global-border-radius: 1vmin; /* default 1vmin */
 
   --background-image: none;
+  --background-image-blur: 0;
 
   --global-transition-time: 0.35s;
   --font: 'JetBrains Mono', sans-serif;
@@ -43,6 +44,7 @@ html {
   padding: 0;
   margin: 0;
   background-image: var(--background-image);
+  backdrop-filter: blur(var(--background-image-blur));
 }
 .main-unmaximized {
   border-bottom-right-radius: var(--global-border-radius);
@@ -155,9 +157,10 @@ html {
   height: calc(100dvh - 35px - 10vmin);
   width: calc(30dvw - 10vmin);
   background: var(--ui-color-secondary);
+  backdrop-filter: blur(var(--background-image-blur));
   border-bottom-left-radius:  var(--global-border-radius);
   position: fixed;
-  top: 35px;
+  top: 0%;
   left: 0%;
   z-index: 90;
 }
@@ -165,6 +168,7 @@ html {
   height: 5.5vmin;
   width: 100%;
   background-color: var(--ui-color-primary);
+  backdrop-filter: blur(var(--background-image-blur));
   border: 0vmin solid var(--active);
   box-sizing: border-box;
   border-radius: var(--global-border-radius);
@@ -208,6 +212,7 @@ html {
 #todo-list::-webkit-scrollbar-thumb {
   background: var(--ui-color-tertiary);
   border-radius: var(--global-border-radius);
+  backdrop-filter: blur(var(--background-image-blur));
 }
 #todo-list::-webkit-scrollbar-thumb:hover {
   background: var(--ui-color-primary);
@@ -217,6 +222,7 @@ html {
   height: 10vmin;
   width: calc(100% - 4vmin);
   background: var(--ui-color-tertiary);
+  backdrop-filter: blur(var(--background-image-blur));
   border-radius: var(--global-border-radius);
   position: relative;
   display: flex;
@@ -331,6 +337,7 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
   background: var(--ui-color-secondary);
+  backdrop-filter: blur(var(--background-image-blur));
   padding: 3.5vmin;
   margin: 0;
   border-radius: var(--global-border-radius);
@@ -346,6 +353,7 @@ html {
   margin-bottom: 1.5vmin;
   border-radius: var(--global-border-radius);
   background: var(--ui-color-primary);
+  backdrop-filter: blur(var(--background-image-blur));
   color: var(--paragraph-color-1);
   box-sizing: border-box;
   transition: var(--global-transition-time);
@@ -358,6 +366,7 @@ html {
 }
 .NewTaskInput:focus {
   background: var(--ui-color-tertiary);
+  backdrop-filter: blur(var(--background-image-blur));
   border: var(--active-outline-thickness) solid var(--active);
   filter: drop-shadow(0 0 1vmin var(--active));
 }
@@ -414,6 +423,7 @@ html {
   width: 100%;
   border-top-left-radius: var(--global-border-radius);
   border-top-right-radius: var(--global-border-radius);
+  backdrop-filter: blur(var(--background-image-blur));
   display: flex;
   flex-direction: row;
   overflow-x: auto;
@@ -427,6 +437,7 @@ html {
   border: 0.0vmin solid var(--active);
   outline: none;
   background: var(--ui-color-quaternary);
+  backdrop-filter: blur(var(--background-image-blur));
   color: var(--heading-color-1);
   margin-left: 1vmin;
   border-top-left-radius: var(--global-border-radius);
@@ -440,6 +451,7 @@ html {
 }
 .active-tablink {
   background: var(--ui-color-secondary);
+  backdrop-filter: blur(var(--background-image-blur));
 }
 .tabContents {
   height: calc(100% - 35px - 10vmin);
@@ -449,6 +461,7 @@ html {
   left: 0%;
   padding: 5vmin;
   background: var(--ui-color-secondary);
+  backdrop-filter: blur(var(--background-image-blur));
   display: none;
 }
 #closeSettings {
@@ -470,6 +483,7 @@ html {
 #closeSettings:hover {
   background: var(--active);
   filter: drop-shadow(0 0 1vmin var(--active));
+  backdrop-filter: blur(var(--background-image-blur));
 }
 #closeSettings:active {
   transition: 0.05s;
@@ -483,6 +497,7 @@ html {
   padding: 1vmin;
   border-radius: var(--global-border-radius);
   background: var(--ui-color-primary);
+  backdrop-filter: blur(var(--background-image-blur));
   border: none;
   outline: none;
   color: var(--heading-color-1);
