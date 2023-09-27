@@ -20,9 +20,17 @@
 
   --active-outline-thickness: 0.5vmin; /* default 0.5vmin */
   --global-border-radius: 1vmin; /* default 1vmin */
+
+  --background-image: none;
+
+  --global-transition-time: 0.35s;
+  --font: 'JetBrains Mono', sans-serif;
+}
+body, html {
+  color: rgba(0,0,0,0);
 }
 html {
-  font-family: 'JetBrains Mono', sans-serif;
+  font-family: var(--font);
 }
 .main {
   height: calc(100dvh - 35px);
@@ -34,6 +42,7 @@ html {
   background: var(--bg-color-primary);
   padding: 0;
   margin: 0;
+  background-image: var(--background-image);
 }
 .main-unmaximized {
   border-bottom-right-radius: var(--global-border-radius);
@@ -53,7 +62,7 @@ html {
   top: 0;
   left: 0;
   background: var(--navbar-color);
-  color: #fff;
+  color: var(--heading-color-1);
   z-index: 99;
 }
 .navbar .wintitle {
@@ -76,7 +85,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #303030;
+  background: var(--ui-color-primary);
   padding: 0;
   margin: 0;
   position: fixed;
@@ -84,7 +93,7 @@ html {
   right: 0;
   -webkit-app-region: no-drag;
   box-sizing: border-box;
-  transition: 0.35s;
+  transition: var(--global-transition-time);
   border: 0vmin solid var(--active);
   cursor: pointer;
 }
@@ -110,9 +119,10 @@ html {
   right: 35px;
   -webkit-app-region: no-drag;
   box-sizing: border-box;
-  transition: 0.35s;
+  transition: var(--global-transition-time);
   border: 0vmin solid var(--active);
   cursor: pointer;
+  color: var(--heading-color-1);
   border-radius: var(--global-border-radius);
 }
 .settings:hover {
@@ -160,8 +170,8 @@ html {
   border-radius: var(--global-border-radius);
   color: var(--heading-color-1);
   cursor: pointer;
-  transition: 0.35s;
-  font-family: 'JetBrains Mono', sans-serif;
+  transition: var(--global-transition-time);
+  font-family: var(--font);
 }
 .sidebarButton:hover {
   background: var(--active);
@@ -173,7 +183,7 @@ html {
   border-width: var(--active-outline-thickness);
   filter: drop-shadow(0 0 1vmin var(--active));
   transform: scale(105%);
-  transition: 0.15s;
+  transition: 0.05s;
 }
 #todo-list {
   padding: 2vmin;
@@ -251,7 +261,7 @@ html {
   justify-content: center;
   font-size: 2vmin;
   color: var(--ui-color-primary);
-  transition: 0.35s;
+  transition: var(--global-transition-time);
 }
 .Item .UnselectedItemCheckbox {
   background: var(--ui-color-primary);
@@ -300,7 +310,7 @@ html {
   border-radius: 50%;
   color: #b4b4b4;
   font-size: 1.9vmin;
-  transition: 0.35s;
+  transition: var(--global-transition-time);
   border: 0vmin solid var(--active);
   box-sizing: border-box;
 }
@@ -338,7 +348,7 @@ html {
   background: var(--ui-color-primary);
   color: var(--paragraph-color-1);
   box-sizing: border-box;
-  transition: 0.35s;
+  transition: var(--global-transition-time);
   cursor: text;
   padding-left: 0.5vmin;
 }
@@ -368,7 +378,7 @@ html {
   right: 1vmin;
   color: var(--paragraph-color-1);
   cursor: pointer;
-  transition: 0.35s;
+  transition: var(--global-transition-time);
   box-sizing: border-box;
 }
 .NewTaskClose:hover {
@@ -421,9 +431,9 @@ html {
   margin-left: 1vmin;
   border-top-left-radius: var(--global-border-radius);
   border-top-right-radius: var(--global-border-radius);
-  font-family: 'JetBrains Mono', sans-serif;
+  font-family: var(--font);
   cursor: pointer;
-  transition: 0.35s;
+  transition: var(--global-transition-time);
 }
 .tablinks:hover {
   background: var(--active);
@@ -455,7 +465,7 @@ html {
   border-top-right-radius: var(--global-border-radius);
   box-sizing: border-box;
   border: 0vmin solid var(--active);
-  transition: 0.35s;
+  transition: var(--global-transition-time);
 }
 #closeSettings:hover {
   background: var(--active);
@@ -466,4 +476,27 @@ html {
   border-width: .5vmin;
   background: var(--ui-color-quaternary);
   filter: drop-shadow(0 0 1vmin var(--active));
+}
+#settingsMenu select {
+  height: auto;
+  width: 25vmin;
+  padding: 1vmin;
+  border-radius: var(--global-border-radius);
+  background: var(--ui-color-primary);
+  border: none;
+  outline: none;
+  color: var(--heading-color-1);
+  font-family: var(--font);
+  transition: var(--global-transition-time);
+}
+#settingsMenu select option {
+  padding: 1vmin;
+  background: var(--ui-color-tertiary);
+  border-radius: var(--global-border-radius);
+  color: var(--paragraph-color-1);
+  border: none;
+  outline: none;
+}
+#settingsMenu select:hover {
+  background: var(--active);
 }
