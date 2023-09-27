@@ -56,14 +56,39 @@ document.getElementById("themes").addEventListener("change", (e) => {
   let txt = e.currentTarget.options[e.currentTarget.selectedIndex].value;
   let root = document.querySelector(':root');
   // console.log(txt);
+  let isValid;
   let response = getText(`https://raw.githubusercontent.com/M1dnight-ofcl/Todura-Themes/main/${txt}`);
-  if (!response) return;
+  try { 
+    isValid= Boolean(new URL(urlString)); 
+  }
+  catch(e){ 
+    isValid= false; 
+  }
+  if (!isValid) return;
   let parsedResponse = JSON.parse(response);
   let keys = Object.keys(parsedResponse);
   console.log(parsedResponse);
   for (let i = 0; i < keys.length; i++) {
     // console.log(`setting --${keys[i]} to ${parsedResponse[keys[i]]}`)
     root.style.setProperty(`--${keys[i]}`, parsedResponse[keys[i]]);
+  }
+})
+document.getElementById('submitCustomUrl').addEventListener('click', (e) => {
+  e.preventDefault();
+  let isValid;
+  let customUrl = document.getElementById('customUrl');
+  try { 
+    isValid= Boolean(new URL(urlString)); 
+  }
+  catch(e){ 
+    isValid= false; 
+  }
+  let response = getText(customUrl.value);
+  console.log(customUrl.value, isValid);
+  if (!isValid) {
+    console.error('bad url');
+    document.getElementById('invalidUrl').style.display = 'block';
+    setTimeout(() => { document.getElementById('invalidUrl').style.display = 'none'; }, 2000);
   }
 })
 

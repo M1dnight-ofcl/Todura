@@ -54,6 +54,7 @@
         </div>
         <div class="tabContents" id="appearance">
           <h1>Appearance</h1>
+          <h3>Current Theme</h3>
           <select name="themes" id="themes">
             <optgroup label="Default Theme">
               <option value="default/theme-d.json">Default - Dark</option>
@@ -68,6 +69,11 @@
               <option value="misc/translucent.json">Translucent</option>
             </optgroup>
           </select>
+          <br><br>
+          <label for="customUrl" class="NewTaskInputLabel">Input Custom URL</label><br>
+        <input onfocus="this.value='';" class="NewTaskInput" type="text" name="customUrl" id="customUrl" /> 
+        <button class="sidebarButton" id="submitCustomUrl">Submit</button><br>
+        <span id="invalidUrl">Invalid Url!</span>
         </div>
       </div>
       <div class="NewTaskWindow" id="NewTaskWindow">
