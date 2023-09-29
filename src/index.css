@@ -26,6 +26,8 @@
 
   --global-transition-time: 0.35s;
   --font: 'JetBrains Mono', sans-serif;
+
+  --ui-scale: 1;
 }
 body, html {
   color: rgba(0,0,0,0);
@@ -136,7 +138,7 @@ html {
   border-width: var(--active-outline-thickness);
 }
 .main h1 {
-  font-size: 4.25vmin;
+  font-size: calc(4.25vmin * var(--ui-scale));
   color: var(--heading-color-1);
   font-weight: 300;
   padding: 0;
@@ -144,7 +146,7 @@ html {
   margin-bottom: 1.5vmin;
 }
 .main p {
-  font-size: 2.5vmin;
+  font-size: calc(2.5vmin * var(--ui-scale));
   color: var(--paragraph-color-1);
   font-weight: 200;
   margin-bottom: 1.5vmin;
@@ -165,7 +167,7 @@ html {
   z-index: 90;
 }
 .sidebarButton {
-  height: 5.5vmin;
+  height: calc(5.5vmin * var(--ui-scale));
   width: 100%;
   background-color: var(--ui-color-primary);
   backdrop-filter: blur(var(--background-image-blur));
@@ -176,6 +178,7 @@ html {
   cursor: pointer;
   transition: var(--global-transition-time);
   font-family: var(--font);
+  font-size: calc(2vmin * var(--ui-scale));
 }
 .sidebarButton:hover {
   background: var(--active);
@@ -204,7 +207,7 @@ html {
   scroll-behavior: smooth;
 }
 #todo-list::-webkit-scrollbar {
-  width: 10px;
+  width: calc(10px * var(--ui-scale));
 }
 #todo-list::-webkit-scrollbar-track {
   background: #00000000;
@@ -219,7 +222,7 @@ html {
 }
 .Item {
   padding: 2vmin;
-  height: 10vmin;
+  height: calc(10vmin * var(--ui-scale));
   width: calc(100% - 4vmin);
   background: var(--ui-color-tertiary);
   backdrop-filter: blur(var(--background-image-blur));
@@ -236,7 +239,7 @@ html {
   height: 100%;
 }
 .ItemTextWrapper h1 {
-  font-size: 3vmin;
+  font-size: calc(3vmin * var(--ui-scale));
   color: var(--heading-color-1);
   font-weight: 300;
   padding: 0;
@@ -244,7 +247,7 @@ html {
   margin-bottom: .5vmin;
 }
 .ItemTextWrapper p {
-  font-size: 2vmin;
+  font-size: calc(2vmin * var(--ui-scale));
   color: var(--paragraph-color-1);
   font-weight: 200;
   margin-bottom: .5vmin;
@@ -252,7 +255,7 @@ html {
   margin: 0;
 }
 .Item .ItemCheckbox {
-  height: 45%;
+  height: calc(45% * var(--ui-scale));
   aspect-ratio: 1 / 1;
   margin-right: 2vmin;
   border: none;
@@ -265,7 +268,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2vmin;
+  font-size: calc(2vmin * var(--ui-scale));
   color: var(--ui-color-primary);
   transition: var(--global-transition-time);
 }
@@ -298,7 +301,7 @@ html {
 .ItemActionContainer {
   /* background: #fff; */
   width: 50%;
-  height: 3.5vmin;
+  height: calc(3.5vmin * var(--ui-scale));
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -319,6 +322,7 @@ html {
   transition: var(--global-transition-time);
   border: 0vmin solid var(--active);
   box-sizing: border-box;
+  font-size: calc(2vmin * var(--ui-scale));
 }
 .ItemAction:hover {
   background-color: var(--ui-color-primary);
@@ -329,8 +333,8 @@ html {
   border-width: var(--active-outline-thickness);
 }
 .NewTaskWindow {
-  height: 50dvh;
-  width: 25dvw;
+  height: calc(50dvh * var(--ui-scale));
+  width: calc(25dvw * var(--ui-scale));
   display: none;
   position: fixed;
   top: 50%;
@@ -347,7 +351,7 @@ html {
 }
 .NewTaskInput {
   width: 100%;
-  height: 4vmin;
+  height: calc(4vmin * var(--ui-scale));
   border: 0.25vmin solid var(--ui-color-primary);
   outline: none;
   margin-bottom: 1.5vmin;
@@ -372,10 +376,10 @@ html {
 }
 .NewTaskInputLabel {
   color: var(--paragraph-color-1);
-  font-size: 1.75vmin;
+  font-size: calc(1.75vmin * var(--ui-scale));
 }
 .NewTaskClose {
-  height: 3.5vmin;
+  height: calc(3.5vmin * var(--ui-scale));
   aspect-ratio: 1/1;
   border-radius: var(--global-border-radius);
   font-size: 2.5vmin;
@@ -419,7 +423,7 @@ html {
   position: absolute;
   top: 0%;
   left: 0%;
-  height: 35px;
+  height: calc(35px * var(--ui-scale));
   width: 100%;
   border-top-left-radius: var(--global-border-radius);
   border-top-right-radius: var(--global-border-radius);
@@ -444,6 +448,10 @@ html {
   border-top-right-radius: var(--global-border-radius);
   font-family: var(--font);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1.75vmin * var(--ui-scale));
   transition: var(--global-transition-time);
 }
 .tablinks:hover {
@@ -454,7 +462,7 @@ html {
   backdrop-filter: blur(var(--background-image-blur));
 }
 .tabContents {
-  height: calc(100% - 35px - 10vmin);
+  height: calc(100% - (35px * var(--ui-scale)) - 10vmin);
   width: calc(100% - 10vmin);
   position: fixed;
   bottom: 0%;
@@ -479,6 +487,7 @@ html {
   box-sizing: border-box;
   border: 0vmin solid var(--active);
   transition: var(--global-transition-time);
+  font-size: calc(2.5vmin * var(--ui-scale));
 }
 #closeSettings:hover {
   background: var(--active);
@@ -493,7 +502,7 @@ html {
 }
 #settingsMenu select {
   height: auto;
-  width: 25vmin;
+  width: calc(25vmin * var(--ui-scale));
   padding: 1vmin;
   border-radius: var(--global-border-radius);
   background: var(--ui-color-primary);
@@ -520,26 +529,51 @@ html {
   margin: 0;
   margin-bottom: .75vmin;
   padding: 0;
+  font-size: calc(3vmin * var(--ui-scale));
 }
 #customUrl {
-  width: 35vmin;
+  width: calc(35vmin * var(--ui-scale));
 }
 #submitCustomUrl {
-  width: 8vmin;
-  height: 4vmin;
-  font-size: 1.5vmin;
+  width: calc(8vmin * var(--ui-scale));
+  height: calc(4vmin * var(--ui-scale));
+  font-size: calc(1.5vmin * var(--ui-scale));
 }
 #invalidUrl {
-  font-size: 2vmin;
+  font-size: calc(2vmin * var(--ui-scale));
   color: var(--unsuccessful);
   margin: 0;
   padding: 0;
   display: none;
 }
 #successfulUrl {
-  font-size: 2vmin;
+  font-size: calc(2vmin * var(--ui-scale));
   color: var(--successful);
   margin: 0;
   padding: 0;
   display: none;
+}
+.slider {
+  height: calc(1vmin * var(--ui-scale));
+  width: calc(25vmin * var(--ui-scale));
+  border-radius: var(--global-border-radius);
+  transition: var(--global-transition-time);
+  background: var(--ui-color-primary);
+  appearance: none;
+  outline: none;
+  border: none;
+}
+.slider::-webkit-slider-thumb:hover {
+  background: var(--active);
+}
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  outline: none;
+  border: none;
+  height: calc(2vmin * var(--ui-scale));
+  width: calc(2vmin * var(--ui-scale));
+  background: var(--paragraph-color-1);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--global-transition-time);
 }

@@ -79,6 +79,13 @@ document.getElementById("themes").addEventListener("change", (e) => {
     root.style.setProperty(`--${keys[i]}`, parsedResponse[keys[i]]);
   }
 })
+document.getElementById('Uiscale').addEventListener('input', (e) => {
+  e.preventDefault();
+  let root = document.querySelector(':root');
+  let value = e.currentTarget.value / 10;
+  console.log(value);
+  root.style.setProperty(`--ui-scale`, value);
+})
 document.getElementById('submitCustomUrl').addEventListener('click', (e) => {
   e.preventDefault();
   let root = document.querySelector(':root');
