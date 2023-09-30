@@ -345,7 +345,7 @@ html {
   padding: 3.5vmin;
   margin: 0;
   border-radius: var(--global-border-radius);
-  z-index: 98;
+  z-index: 99;
   border: 0.25vmin solid var(--ui-color-primary);
   box-sizing: border-box;
 }
@@ -414,7 +414,7 @@ html {
   padding: 3.5vmin;
   margin: 0;
   border-radius: var(--global-border-radius);
-  z-index: 98;
+  z-index: 99;
   border: 0.25vmin solid var(--ui-color-primary);
   box-sizing: border-box;
 }
@@ -576,4 +576,52 @@ html {
   border-radius: 50%;
   cursor: pointer;
   transition: var(--global-transition-time);
+}
+#banners {
+  padding: 0;
+  margin: 0;
+  height: auto;
+  width: calc(70dvw);
+  border-bottom-right-radius:  var(--global-border-radius);
+  position: fixed;
+  right: 0%;
+  top: 0%;
+  z-index: 99;
+}
+.banner {
+  height: calc((5vmin - 2vmin) * var(--ui-scale));
+  width: calc(100% - 2vmin);
+  padding: 1vmin;
+  background: var(--successful);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.banner p {
+  font-size: 2vmin;
+  color: var(--bg-color-primary);
+  background: rgba(255,255,255,0.4);
+  width: calc(100% - 5vmin - 1.5vmin);
+  padding: .5vmin;
+  padding-left: 1vmin;
+  border-radius: var(--global-border-radius);
+}
+.closeBanner {
+  height: 5vmin;
+  aspect-ratio: 1/1;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  background: rgba(255,255,255,0.4);
+  font-size: 2.5vmin;
+  color: var(--ui-color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--global-transition-time);
+}
+.closeBanner:hover {
+  background: var(--ui-color-primary);
+  color: var(--successful);
 }

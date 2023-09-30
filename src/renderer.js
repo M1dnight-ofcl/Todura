@@ -111,5 +111,5 @@ document.getElementById('submitCustomUrl').addEventListener('click', (e) => {
   }
 })
 
-
+import './banners.jsx'
 import './app.jsx';

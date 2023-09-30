@@ -9,22 +9,21 @@ import { faCheck, faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-ico
 
 const List = () => {
     let items = [];
-    // if (localStorage.getItem('TaskSave')) {
-    //     items = localStorage.getItem('TaskSave');
-    // } else {
-    //     items = [
-    //         // example item:
-    //         // {
-    //         //     "index": 0,
-    //         //     "name": "Hello, World #1",
-    //         //     "desc": "1: code, 2: code",
-    //         // },
-    //     ]
-    // }
+    // example item:
+    // {
+    //     "index": 0,
+    //     "name": "Hello, World #1",
+    //     "desc": "1: code, 2: code",
+    // },
     const [Tasks, setTasks] = useState(
         items
     );
-    
+    const createNewBanner = (e, BannerTitle, Status) => {
+        setBanners([
+            ...Banners,
+            {"index":(Banners.length+1) ,"title":BannerTitle, "status":Status}
+        ]);
+    };
     document.getElementById("createTask").addEventListener("click", (e) => {
         e.preventDefault();
         let nameElement = document.getElementById("newTaskName");
@@ -109,7 +108,7 @@ const List = () => {
                     t.index !== index
                 )
             )
-            localStorage.setItem('TaskSave', Tasks); 
+            // localStorage.setItem('TaskSave', Tasks); 
         }
         return (
             <div className='Item' id={`item${prop.index}`}>
