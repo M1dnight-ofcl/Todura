@@ -18,12 +18,6 @@ const List = () => {
     const [Tasks, setTasks] = useState(
         items
     );
-    const createNewBanner = (e, BannerTitle, Status) => {
-        setBanners([
-            ...Banners,
-            {"index":(Banners.length+1) ,"title":BannerTitle, "status":Status}
-        ]);
-    };
     document.getElementById("createTask").addEventListener("click", (e) => {
         e.preventDefault();
         let nameElement = document.getElementById("newTaskName");
@@ -31,10 +25,7 @@ const List = () => {
         let name = nameElement.value;
         let desc = descElement.value;
         console.log(`creating item with name: ${name} and desc: ${desc}`)
-        setTasks([
-            ...Tasks,
-            {"index":(Tasks.length+1) ,"name":name, "desc":desc}
-        ]);
+        setTasks(Tasks.concat([{"index":(Tasks.length+1) ,"name":name, "desc":desc}]));
         // localStorage.setItem('TaskSave', Tasks); 
         // nameElement.value = "";
         // descElement.value = "";
@@ -43,7 +34,7 @@ const List = () => {
     });
     const Item = (prop) => {
         const onLoadAction = () => {
-            console.log('checkmark loaded')
+            // console.log('checkmark loaded')
             document.getElementById(`item${prop.index}checkbox`).classList.remove('SelectedItemCheckbox');
             document.getElementById(`item${prop.index}checkbox`).classList.add("UnselectedItemCheckbox");
         }
@@ -83,16 +74,12 @@ const List = () => {
             let descElement = document.getElementById("EditTaskDesc");
             let name = nameElement.value;
             let desc = descElement.value;
-            console.log(`editing item${prop.index} with name: ${name} and desc: ${desc}`)
-            setTasks([
-                Tasks.filter(t => 
-                t.index <= prop.index-2
-                ),
-                {"index":prop.index ,"name":name, "desc":desc},
-                Tasks.filter(t => 
-                    t.index >= prop.index
-                )
-            ]);
+            // console.log(`editing item${prop.index} with name: ${name} and desc: ${desc}`)
+            setTasks(
+                Tasks.filter(t => t.index < prop.index).concat(
+                [{"index":(prop.index) ,"name":name, "desc":desc}],
+                Tasks.filter(t => t.index > prop.index))
+            );
             // localStorage.setItem('TaskSave', Tasks); 
             // nameElement.value = "";
             // descElement.value = "";
@@ -103,11 +90,7 @@ const List = () => {
         const deleteTask = (index) => {
             console.log(`deleting item${prop.index}`);
             // document.getElementById(`item${prop.index}`).remove()
-            setTasks(
-                Tasks.filter(t => 
-                    t.index !== index
-                )
-            )
+            setTasks(Tasks.filter(t => t.index !== index))
             // localStorage.setItem('TaskSave', Tasks); 
         }
         return (

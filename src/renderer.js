@@ -84,7 +84,7 @@ document.getElementById("newTodoItem").addEventListener("click", (e) => {
     console.log('opened newtask window');
   }
 });
-function getText(filePath) {
+const getText = (filePath) => {
   return $.ajax({
         type: "GET",
         url: filePath,
