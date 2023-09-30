@@ -71,7 +71,12 @@ document.getElementById("themes").addEventListener("change", (e) => {
   //   isValid= false; 
   // }
   if (!isValid) return;
-  let parsedResponse = JSON.parse(response);
+  let parsedResponse;
+  try {
+    parsedResponse = JSON.parse(response);
+  } catch {
+    console.log("parse failed");
+  }
   let keys = Object.keys(parsedResponse);
   console.log(parsedResponse);
   for (let i = 0; i < keys.length; i++) {

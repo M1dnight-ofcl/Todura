@@ -44,6 +44,35 @@ const BannerUI = () => {
             </div>
         )
     }
+    document.getElementById("themes").addEventListener("change", (e) => {
+        let debugMode = document.getElementById('debugMode').checked;
+        // console.log(debugMode);
+        if (debugMode) {
+            e.preventDefault();
+            let theme = e.currentTarget.value;
+            setBanners([
+                ...Banners,
+                {"index":(Banners.length+1) ,"title":`Changed Theme to: ${theme}`, "status":"success"}
+            ]);
+        } else {
+            // console.log('debug mode disabled')
+        }
+    });
+    document.getElementById("createTask").addEventListener("click", (e) => {
+        let debugMode = document.getElementById('debugMode').checked;
+        // console.log(debugMode);
+        if (debugMode) {
+            e.preventDefault();
+            let nameElement = document.getElementById("newTaskName");
+            let name = nameElement.value;
+            setBanners([
+                ...Banners,
+                {"index":(Banners.length+1) ,"title":`Created new task: ${name}`, "status":"success"}
+            ]);
+        } else {
+            // console.log('debug mode disabled')
+        }
+    });
     return (
         <>
             {Banners.map((item) => (
