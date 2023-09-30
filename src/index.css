@@ -592,10 +592,10 @@ html {
   height: calc((5vmin - 2vmin) * var(--ui-scale));
   width: calc(100% - 2vmin);
   padding: 1vmin;
-  background: var(--successful);
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
 }
 .banner p {
   font-size: 2vmin;
@@ -620,8 +620,17 @@ html {
   justify-content: center;
   cursor: pointer;
   transition: var(--global-transition-time);
+  z-index: 100;
 }
 .closeBanner:hover {
-  background: var(--ui-color-primary);
-  color: var(--successful);
+  background: rgba(255,255,255,0.75);
+}
+.success {
+  background: var(--successful);
+}
+.fail {
+  background: var(--unsuccessful);
+}
+.none {
+  background: var(--inactive);
 }

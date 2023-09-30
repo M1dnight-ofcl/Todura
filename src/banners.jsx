@@ -7,11 +7,19 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 const BannerUI = () => {
     let banners = [
-        // example item:
-        // {
+        // example items:
+        // { 
         //     "index": 0,
         //     "title": "Hello, World #1",
-        //     "status": true,
+        //     "status": "success",
+        // }, {
+        //     "index": 1,
+        //     "title": "Hello, World #2",
+        //     "status": "fail",
+        // }, {
+        //     "index": 2,
+        //     "title": "Hello, World #3",
+        //     "status": "none",
         // },
     ];
     
@@ -28,9 +36,9 @@ const BannerUI = () => {
             )
         }
         return (
-            <div className='banner'id={`banner${prop.index}`} >
+            <div className={`banner ${prop.status}`} id={`banner${prop.index}`} >
                 <p>{prop.title}</p>
-                <div class="closeBanner" id={`closeBanner${prop.index}`} onClick={(e) => close(e, prop.index)}>
+                <div className="closeBanner" id={`closeBanner${prop.index}`} onClick={(e) => close(e, prop.index)}>
                     <FontAwesomeIcon icon={faXmark} />
                 </div>
             </div>
