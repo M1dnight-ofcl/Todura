@@ -4,6 +4,51 @@ const ipc = require('electron').ipcRenderer
 
 let currentstatus=true;
 
+const ThemeParser = (JSONstring) => {
+  let root = document.querySelector(':root');
+  let status = {"status": true};
+  let parsedResponse;
+  let ValidKeys = [
+    "bg-color-primary", 
+    "ui-color-primary", "ui-color-secondary", "ui-color-tertiary", "ui-color-quaternary",
+    "navbar-color",
+    "active", "inactive","successful","unsuccessful",
+    "banner-ui-color",
+    "heading-color-1", "paragraph-color-1",
+    "active-outline-thickness",
+    "global-border-radius", "global-transition-time",
+    "background-image", "background-image-blur",
+    "font"
+  ]
+  try {
+    console.log('parse begun');
+    parsedResponse = JSON.parse(JSONstring);
+  } catch {
+    console.log('parse failed')
+    status = {"status": false, "reason": "Parse Error: JSON file invalid"};
+  }
+  let keys = Object.keys(parsedResponse);
+  // console.log(parsedResponse);
+  for (let i = 0; i < keys.length; i++) {
+    if (status.status) {
+      if (!ValidKeys.includes(keys[i])) {
+        status = {"status": false, "reason": `Parse Error: "${keys[i]}" is not a valid key`};
+        break;
+      } else {
+        root.style.setProperty(`--${keys[i]}`, parsedResponse[keys[i]]);
+        status = {"status": true};
+      }
+    } 
+  }
+  if (!status.status) {
+    let response = getText(`https://raw.githubusercontent.com/M1dnight-ofcl/Todura-Themes/main/default/theme-d.json`);
+    ThemeParser(response);
+    console.error(status.reason);
+  } else {
+    console.log('Theme Successfully Loaded');
+  }
+}
+
 document.getElementById("settingsButton").addEventListener('click', (e) => {
   e.preventDefault();
   console.log('pressed "settings" button');
@@ -60,29 +105,9 @@ document.getElementById("themes").addEventListener("change", (e) => {
   if (txt === "custom") {
     return;
   }
-  let root = document.querySelector(':root');
   // console.log(txt);
-  let isValid = true;
   let response = getText(`https://raw.githubusercontent.com/M1dnight-ofcl/Todura-Themes/main/${txt}`);
-  // try { 
-  //   isValid= Boolean(new URL(urlString)); 
-  // }
-  // catch(e){ 
-  //   isValid= false; 
-  // }
-  if (!isValid) return;
-  let parsedResponse;
-  try {
-    parsedResponse = JSON.parse(response);
-  } catch {
-    console.log("parse failed");
-  }
-  let keys = Object.keys(parsedResponse);
-  console.log(parsedResponse);
-  for (let i = 0; i < keys.length; i++) {
-    // console.log(`setting --${keys[i]} to ${parsedResponse[keys[i]]}`)
-    root.style.setProperty(`--${keys[i]}`, parsedResponse[keys[i]]);
-  }
+  ThemeParser(response);
 })
 document.getElementById('Uiscale').addEventListener('input', (e) => {
   e.preventDefault();
@@ -93,22 +118,12 @@ document.getElementById('Uiscale').addEventListener('input', (e) => {
 })
 document.getElementById('submitCustomUrl').addEventListener('click', (e) => {
   e.preventDefault();
-  let root = document.querySelector(':root');
   let customUrl = document.getElementById('customUrl');
   let response = getText(customUrl.value);
   // isValid = true;
   console.log(customUrl.value);
   try {
-    let parsedResponse = JSON.parse(response);
-    let keys = Object.keys(parsedResponse);
-    console.log(parsedResponse);
-    for (let i = 0; i < keys.length; i++) {
-      // console.log(`setting --${keys[i]} to ${parsedResponse[keys[i]]}`)
-      root.style.setProperty(`--${keys[i]}`, parsedResponse[keys[i]]);
-    }
-    document.getElementById('themes').value = "custom";
-    document.getElementById('successfulUrl').style.display = 'block';
-    setTimeout(() => { document.getElementById('successfulUrl').style.display = 'none'; }, 2000);
+    ThemeParser(response);
   } catch {
     console.error('bad url');
     document.getElementById('invalidUrl').style.display = 'block';
