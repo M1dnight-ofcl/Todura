@@ -637,3 +637,7 @@ html {
   height: calc(2.5vmin * var(--ui-scale));
   aspect-ratio: 1/1;
 }
+#settingsMenu p {
+  font-size: calc(2vmin * var(--ui-scale));
+  margin-bottom: 1vmin;
+}

@@ -33,10 +33,12 @@ const List = () => {
         // window.location.reload();
     });
     const Item = (prop) => {
+        let ExperimentalMode = false;
         const onLoadAction = () => {
             // console.log('checkmark loaded')
             document.getElementById(`item${prop.index}checkbox`).classList.remove('SelectedItemCheckbox');
             document.getElementById(`item${prop.index}checkbox`).classList.add("UnselectedItemCheckbox");
+            document.getElementById(`item${prop.index}edit`).style.display = "none";
         }
         const onClickAction = () => {
             console.log("checkbox click");
@@ -55,8 +57,15 @@ const List = () => {
         }
         useEffect(() => {
             onLoadAction();
+            if (document.getElementById('experimentalMode').checked) {
+                ExperimentalMode = true;
+                document.getElementById(`item${prop.index}edit`).style.display = "flex";
+            } else {
+                ExperimentalMode = false;
+                document.getElementById(`item${prop.index}edit`).style.display = "none";
+            }
         });
-        /*
+        // /*
         const openEditMenu = (index) => {
             console.log('pressed "edittask" button');
             let visible = document.getElementById("EditTaskWindow").style.display === "block";
@@ -86,7 +95,16 @@ const List = () => {
             document.getElementById("EditTaskWindow").style.display = "none";
             // window.location.reload();
         });
-        */
+        // */
+        document.getElementById('experimentalMode').addEventListener("change", () => {
+            if (document.getElementById('experimentalMode').checked) {
+                ExperimentalMode = true;
+                document.getElementById(`item${prop.index}edit`).style.display = "flex";
+            } else {
+                ExperimentalMode = false;
+                document.getElementById(`item${prop.index}edit`).style.display = "none";
+            }
+        });
         const deleteTask = (index) => {
             console.log(`deleting item${prop.index}`);
             // document.getElementById(`item${prop.index}`).remove()
@@ -104,7 +122,7 @@ const List = () => {
                     <p>{prop.taskObjective}</p>
                 </div>
                 <div className="ItemActionContainer">
-                    {/* <span onClick={() => openEditMenu(prop.index)} id={`item${prop.index}edit`} className="ItemAction"><FontAwesomeIcon icon={faPenToSquare} /></span> */}
+                    <span onClick={() => openEditMenu(prop.index)} id={`item${prop.index}edit`} className="ItemAction"><FontAwesomeIcon icon={faPenToSquare} /></span>
                     <span onClick={() => deleteTask(prop.index)} id={`item${prop.index}del`} className="ItemAction"><FontAwesomeIcon icon={faTrash} /></span>
                 </div>
             </div>
